@@ -21,11 +21,8 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary('Hyperion cantos', 'Dan simmon', 563, 'read');
 addBookToLibrary('12 Rules for Life', 'Jordan Peterson', 763, 'read');
 
-console.log(myLibrary);
-
-const table = document.querySelector('.table tbody');
-
 // iterate over the array and populate table
+const table = document.querySelector('.table tbody');
 myLibrary.forEach((book) => {
     const row = document.createElement('tr');
     const titleCol = document.createElement('td');
@@ -44,3 +41,40 @@ myLibrary.forEach((book) => {
     row.appendChild(readCol);
     table.appendChild(row);
 });
+
+populateTable();
+
+const showBtn = document.getElementById('show-dialog');
+const addBookDialog = document.getElementById('add-book');
+const cancelBtn = document.getElementById('cancel-btn');
+
+// add event listener to open dialog box
+showBtn.addEventListener('click', () => {
+    addBookDialog.showModal();
+});
+
+// close the dialog when user click cancel button
+cancelBtn.addEventListener('click', () => {
+    addBookDialog.close();
+});
+
+// add new book to mylibrary array based on user input
+const newBookForm = document.getElementById('new-book-form');
+newBookForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const newTitle = document.getElementById('title');
+    const newAuthor = document.getElementById('author');
+    const newPages = document.getElementById('pages');
+    const newStatus = document.getElementsByName('read-status');
+    let readStatus = '';
+    newStatus.forEach((status) => {
+        if(status.checked){
+            readStatus = status.value;
+        }
+    });
+    addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, readStatus);
+    populateTable();
+    addBookDialog.close();
+});
+
+
