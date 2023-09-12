@@ -23,7 +23,7 @@ addBookToLibrary('12 Rules for Life', 'Jordan Peterson', 763, 'read');
 
 // iterate over the array and populate table
 const table = document.querySelector('.table tbody');
-myLibrary.forEach((book) => {
+function createNewRow(book) {
     const row = document.createElement('tr');
     const titleCol = document.createElement('td');
     const authorCol = document.createElement('td');
@@ -40,9 +40,8 @@ myLibrary.forEach((book) => {
     row.appendChild(pagesCol);
     row.appendChild(readCol);
     table.appendChild(row);
-});
-
-populateTable();
+}
+myLibrary.forEach(createNewRow);
 
 const showBtn = document.getElementById('show-dialog');
 const addBookDialog = document.getElementById('add-book');
@@ -73,7 +72,7 @@ newBookForm.addEventListener('submit', (event) => {
         }
     });
     addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, readStatus);
-    populateTable();
+    createNewRow(myLibrary[myLibrary.length - 1]);
     addBookDialog.close();
 });
 
