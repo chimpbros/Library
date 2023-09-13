@@ -23,22 +23,33 @@ addBookToLibrary('12 Rules for Life', 'Jordan Peterson', 763, 'read');
 
 // iterate over the array and populate table
 const table = document.querySelector('.table tbody');
-function createNewRow(book) {
+function createNewRow(book, index) {
     const row = document.createElement('tr');
     const titleCol = document.createElement('td');
     const authorCol = document.createElement('td');
     const pagesCol = document.createElement('td');
     const readCol = document.createElement('td');
+    const removeCol = document.createElement('td');
+    const removeBtn = document.createElement('button');
 
     titleCol.textContent = book.title;
     authorCol.textContent = book.author;
     pagesCol.textContent = book.pages;
     readCol.textContent = book.read;
+    removeBtn.textContent = 'remove';
+
+    removeCol.appendChild(removeBtn);
+
+    // create data attribute that corresponds to the index of the current book
+    row.setAttribute('data-index', `${index}`);
+    console.log(row.outerHTML);
+    // add listener to the remove button 
 
     row.appendChild(titleCol);
     row.appendChild(authorCol);
     row.appendChild(pagesCol);
     row.appendChild(readCol);
+    row.appendChild(removeCol);
     table.appendChild(row);
 }
 myLibrary.forEach(createNewRow);
