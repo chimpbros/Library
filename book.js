@@ -18,8 +18,8 @@ function addBookToLibrary(title, author, pages, read) {
     return myLibrary;
 }
 
-addBookToLibrary('Hyperion cantos', 'Dan simmon', 563, 'read');
-addBookToLibrary('12 Rules for Life', 'Jordan Peterson', 763, 'read');
+addBookToLibrary('Hyperion cantos', 'Dan simmon', 563, true);
+addBookToLibrary('12 Rules for Life', 'Jordan Peterson', 763, true);
 
 // iterate over the array and populate table
 const table = document.querySelector('.table tbody');
@@ -35,7 +35,7 @@ function createNewRow(book) {
     titleCol.textContent = book.title;
     authorCol.textContent = book.author;
     pagesCol.textContent = book.pages;
-    readCol.textContent = book.read;
+    readCol.textContent = book.read ? 'read' : 'not read';
     removeBtn.textContent = 'remove';
 
     removeCol.appendChild(removeBtn);
@@ -77,10 +77,10 @@ newBookForm.addEventListener('submit', (event) => {
     const newAuthor = document.getElementById('author');
     const newPages = document.getElementById('pages');
     const newStatus = document.getElementsByName('read-status');
-    let readStatus = '';
+    let readStatus;
     newStatus.forEach((status) => {
         if(status.checked){
-            readStatus = status.value;
+            readStatus = true;
         }
     });
     addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, readStatus);
