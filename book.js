@@ -92,15 +92,46 @@ newBookForm.addEventListener('submit', (event) => {
     const newAuthor = document.getElementById('author');
     const newPages = document.getElementById('pages');
     const newStatus = document.getElementsByName('read-status');
+    const titleError = document.getElementById('name-error');
+    const authorError = document.getElementById('author-error');
+    const pagesError = document.getElementById('pages-error');
+    let validForm;
     let readStatus;
     newStatus.forEach((status) => {
         if(status.checked){
             readStatus = true;
         }
     });
+    if(newTitle.value === '' || newTitle.value == null){
+        titleError.textContent = 'title can\'t be blank';
+        validForm = false;
+    }
+    else{
+        validForm = true;
+        titleError.textContent = '';
+    }
+    if(newAuthor.value === '' || newAuthor.value == null){
+        authorError.textContent = 'author can\'t be blank';
+        validForm = false;
+    }
+    else{
+        validForm = true;
+        authorError.textContent = '';
+    }
+    if(newPages.value === '' || newPages.value == null || isNaN(newPages.value) || newPages.value <= 0){
+        pagesError.textContent = 'enter a valid number';
+        validForm = false;
+    }
+    else{
+        validForm = true;
+        pagesError.textContent = '';
+    }
+    if(validForm){
     addBookToLibrary(newTitle.value, newAuthor.value, newPages.value, readStatus);
     createNewRow(myLibrary[myLibrary.length - 1]);
+    newBookForm.reset();
     addBookDialog.close();
+    }
 });
 
 

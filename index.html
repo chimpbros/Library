@@ -33,10 +33,13 @@
                 <form action="get" id="new-book-form">
                     <label for="title">Book Title</label>
                     <input type="text" name="book-title" id="title">
+                    <div class="error-message" id="name-error"></div>
                     <label for="author">Author</label>
                     <input type="text" name="author" id="author">
+                    <div class="error-message" id="author-error"></div>
                     <label for="pages">Pages</label>
                     <input type="text" name="pages" id="pages">
+                    <div class="error-message" id="pages-error"></div>
                     <label for="read">read</label>
                     <input type="radio" name="read-status" value="read">
                     <label for="not-read">Haven't read</label>
