@@ -9,6 +9,14 @@ function Book(title, author, pages, read) {
         console.log(this);
         return `${title} by ${author}, ${pages} pages, ${read}.`;
     }
+    this.toggleReadStatus = function(){
+        if(this.read){
+            this.read = false;
+        }
+        else{
+            this.read = true;
+        }
+    };
 }
 
 // add book to myLibrary array
@@ -38,12 +46,19 @@ function createNewRow(book) {
     readCol.textContent = book.read ? 'read' : 'not read';
     removeBtn.textContent = 'remove';
 
+
     removeCol.appendChild(removeBtn);
 
     // add listener to the remove button
     removeBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(book), 1);
         row.remove();
+    });
+
+    // add listener to status col
+    readCol.addEventListener('click', () => {
+        book.toggleReadStatus();
+        readCol.textContent = book.read ? 'read' : 'not read';
     });
 
     row.appendChild(titleCol);
