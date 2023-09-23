@@ -37,16 +37,19 @@ function createNewRow(book) {
     const authorCol = document.createElement('td');
     const pagesCol = document.createElement('td');
     const readCol = document.createElement('td');
+    const readDiv = document.createElement('div');
     const removeCol = document.createElement('td');
     const removeBtn = document.createElement('button');
 
     titleCol.textContent = book.title;
     authorCol.textContent = book.author;
     pagesCol.textContent = book.pages;
-    readCol.textContent = book.read ? 'read' : 'not read';
+    readDiv.textContent = book.read ? 'read' : 'not read';
     removeBtn.textContent = 'remove';
     removeBtn.classList.add('remove-btn');
 
+    readDiv.classList.add('status-div');
+    readCol.appendChild(readDiv);
     removeCol.appendChild(removeBtn);
 
     // add listener to the remove button
@@ -56,9 +59,9 @@ function createNewRow(book) {
     });
 
     // add listener to status col
-    readCol.addEventListener('click', () => {
+    readDiv.addEventListener('click', () => {
         book.toggleReadStatus();
-        readCol.textContent = book.read ? 'read' : 'not read';
+        readDiv.textContent = book.read ? 'read' : 'not read';
     });
 
     row.appendChild(titleCol);

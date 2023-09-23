@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+* {
+    font-family: 'roboto', sans-serif;
+}
+
 *:not(dialog) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -40,6 +45,10 @@
     background-color: #609966;
     text-align: left;
     color: white;
+}
+
+.table td {
+    font-weight: 300;
 }
 
 .table th, .table td {
@@ -195,4 +204,13 @@ input[type=text] {
     color: red;
     font-size: 0.8rem;
     margin-bottom: 5px;
+}
+
+.status-div {
+    width: 100px;
+    padding: 10px 0;
+    border: 1px solid #dddddd;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
 }
