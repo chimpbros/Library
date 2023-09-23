@@ -45,7 +45,7 @@ function createNewRow(book) {
     pagesCol.textContent = book.pages;
     readCol.textContent = book.read ? 'read' : 'not read';
     removeBtn.textContent = 'remove';
-
+    removeBtn.classList.add('remove-btn');
 
     removeCol.appendChild(removeBtn);
 
@@ -82,6 +82,7 @@ showBtn.addEventListener('click', () => {
 // close the dialog when user click cancel button
 cancelBtn.addEventListener('click', () => {
     addBookDialog.close();
+    newBookForm.reset();
 });
 
 // add new book to mylibrary array based on user input
