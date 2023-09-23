@@ -160,3 +160,33 @@ input[type=text] {
     border-radius: 50%;
     background: white;
 }
+
+.btn-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+.form-button {
+    border: none;
+    padding: 10px 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#confirm-btn {
+    background-color: #609966;
+    color: #fff;
+}
+
+#confirm-btn:hover {
+    background-color: #40513B;
+}
+
+#cancel-btn:hover {
+    background-color: #ab250a;
+    color: #fff;
+}
